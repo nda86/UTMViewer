@@ -18,8 +18,11 @@ namespace UTM_Viewer_2
             Application.SetCompatibleTextRenderingDefault(false);
 
             MainForm view = new MainForm();
-            ParserUTM parser = new ParserUTM();
-            MainPresenter presenter = new MainPresenter(view, parser);
+            Viewer1 modelViewer1 = new Viewer1();
+            Viewer1Presenter presenter = new Viewer1Presenter(view, modelViewer1);
+
+            Resend modelResend = new Resend();
+            ResendPresenter resendPresender = new ResendPresenter(view, modelResend);
             Application.Run(view);
         }
     }

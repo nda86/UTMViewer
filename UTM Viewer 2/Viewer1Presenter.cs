@@ -7,23 +7,19 @@ using System.Xml.Linq;
 
 namespace UTM_Viewer_2
 {
-   public class MainPresenter
+   public class Viewer1Presenter
     {
-        private readonly IMainForm _view;
-        private readonly IParserUTM _parser;
-        public MainPresenter(IMainForm view, IParserUTM parser)
+        private readonly IFormViewer1 _view;
+        private readonly IModelViewer1 _parser;
+        public Viewer1Presenter(IFormViewer1 view, IModelViewer1 parser)
         {
             _view = view;
             _parser = parser;
             _view.getAllTTN += _view_getAllTTN;
             _view.clickCell += _view_clickCell;
-            _view.getFormBRegInfo += _view_getFormBRegInfo;
         }
 
-        private void _view_getFormBRegInfo(object sender, EventArgs e)
-        {
-           _view.outFormBRegInfo =  _parser.getFormBRegInfo(_view.ipUTM);
-        }
+
 
         private void _view_clickCell(object sender, string ip)
         {

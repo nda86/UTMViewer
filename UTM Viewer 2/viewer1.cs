@@ -10,15 +10,12 @@ using System.Xml;
 
 namespace UTM_Viewer_2
 {
-    public interface IParserUTM
-    {
-        string getFormBRegInfo(string ip);
+    public interface IModelViewer1
+    {       
         List<OutTicket> getAllUTM(string ip);
         string getXML(string ip);
-
-
     }
-    public class ParserUTM : IParserUTM
+    public class Viewer1 : IModelViewer1
     {
 
         public List<OutTicket> getAllUTM(string ip)
@@ -87,44 +84,7 @@ namespace UTM_Viewer_2
             }
         }
 
-        public string getFormBRegInfo(string ip)
-        {
-            try
-            {
-                int i = 0;
-                int y = 0;
-                XmlDocument tmpXml = new XmlDocument();
-                XmlDocument xml = new XmlDocument();
-                xml.Load("http://" + ip + "/opt/out");
-                XmlNodeList list = xml.SelectNodes("//url");
-                List<OutTicket> outTicket = new List<OutTicket>();
-                XmlNamespaceManager manager = new XmlNamespaceManager(xml.NameTable);
-                manager.AddNamespace("tc", "http://fsrar.ru/WEGAIS/Ticket");
-                manager.AddNamespace("ns", "http://fsrar.ru/WEGAIS/WB_DOC_SINGLE_01");
-                manager.AddNamespace("wbr", "http://fsrar.ru/WEGAIS/TTNInformBReg");
-
-                string result = null;
-            
-                foreach (XmlNode url in list)
-                {
-                    tmpXml.Load(url.InnerText);
-                    if (tmpXml.SelectSingleNode("//ns:TTNInformBReg", manager) != null)
-                    {
-
-                        result = result + tmpXml.SelectSingleNode("//wbr:WBRegId", manager).InnerText + "\n"; 
-                    }
-
-                }
-
-                return result;
-            }
-            catch (Exception ex)
-            {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
-                return null;
-            }
         
-    }
 
         public string getXML(string ip)
         {

@@ -11,16 +11,25 @@ using System.Windows.Forms;
 namespace UTM_Viewer_2
 {
 
-    public interface IMainForm
+    public interface IFormViewer1
     {
-        event EventHandler getAllTTN;
-        event EventHandler getFormBRegInfo;
+        event EventHandler getAllTTN;       
         event EventHandler<string> clickCell;
         List<OutTicket> outTTN { set; }
-        string outFormBRegInfo { set; }
+        
         string ipUTM { get; } 
     }
-    public partial class MainForm : Form, IMainForm
+
+    public interface IFormResend
+    {
+        event EventHandler getFormBRegInfo;
+        string outFormBRegInfo { set; }
+        event EventHandler resendTTN;
+        string ipUTM { get; }
+    }
+
+
+    public partial class MainForm : Form, IFormViewer1, IFormResend
     {
         public MainForm()
         {
@@ -28,7 +37,13 @@ namespace UTM_Viewer_2
             btnGetAllTTN.Click += BtnGetAllTTN_Click;
             tableTicket.CellDoubleClick += TableTicket_CellDoubleClick;
             btnGetFormBRegInfo.Click += BtnGetFormBRegInfo_Click;
+            btnSendResend.Click += BtnSendResend_Click;
             //tableTicket.CellDoubleClick += new EventHandler((s, e) => lnkSynEvent_Click(s, e, your_parameter))
+        }
+
+        private void BtnSendResend_Click(object sender, EventArgs e)
+        {
+            if (resendTTN != null) resendTTN(this, EventArgs.Empty);
         }
 
         private void BtnGetFormBRegInfo_Click(object sender, EventArgs e)
@@ -92,13 +107,22 @@ namespace UTM_Viewer_2
         {
             set
             {
-                txtFormBRegInfo.Text = value;
+                if (value != null)
+                {
+                    txtFormBRegInfo.Text = value;
+                }
+                else
+                {
+                    txtFormBRegInfo.Text = "Нет данных";
+                }
+                
             }
         }
 
         public event EventHandler getAllTTN;
         public event EventHandler<string> clickCell;
         public event EventHandler getFormBRegInfo;
+        public event EventHandler resendTTN;
 
         private void MainForm_Load(object sender, EventArgs e)
         {
