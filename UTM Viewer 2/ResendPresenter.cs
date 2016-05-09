@@ -26,6 +26,8 @@ namespace UTM_Viewer_2
 
         private void _view_resendTTN(object sender, EventArgs e)
         {
+            string[] listTTN = _view.listTTNForResend.Split('\n');
+            _view.outResendTTN = _model.resendTTN(_view.ipUTM, _view.fsRarId, listTTN);
             
         }
     }

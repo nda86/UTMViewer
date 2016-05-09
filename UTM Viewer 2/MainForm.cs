@@ -26,6 +26,9 @@ namespace UTM_Viewer_2
         string outFormBRegInfo { set; }
         event EventHandler resendTTN;
         string ipUTM { get; }
+        string listTTNForResend { get; }
+        string outResendTTN { set; }
+        string fsRarId { get; }
     }
 
 
@@ -116,6 +119,30 @@ namespace UTM_Viewer_2
                     txtFormBRegInfo.Text = "Нет данных";
                 }
                 
+            }
+        }
+
+        public string listTTNForResend
+        {
+            get
+            {
+                return txtOutTTN.Text;
+            }
+        }
+
+        public string outResendTTN
+        {
+            set
+            {
+                txtOutResendTTN.Text = value;
+            }
+        }
+
+        public string fsRarId
+        {
+            get
+            {
+                return txtFsrarId.Text;
             }
         }
 

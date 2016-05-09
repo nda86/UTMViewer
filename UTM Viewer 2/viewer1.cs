@@ -7,6 +7,7 @@ using System.Net;
 using System.IO;
 using System.Xml.Linq;
 using System.Xml;
+using System.Diagnostics;
 
 namespace UTM_Viewer_2
 {

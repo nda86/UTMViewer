@@ -45,8 +45,10 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabViewer1 = new System.Windows.Forms.TabPage();
             this.tabSender = new System.Windows.Forms.TabPage();
-            this.btnSendResend = new System.Windows.Forms.Button();
+            this.txtFsrarId = new System.Windows.Forms.TextBox();
+            this.txtOutResendTTN = new System.Windows.Forms.RichTextBox();
             this.txtOutTTN = new System.Windows.Forms.RichTextBox();
+            this.btnSendResend = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.tableTicket)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabViewer1.SuspendLayout();
@@ -59,6 +61,7 @@
             this.txtIPUTM.Name = "txtIPUTM";
             this.txtIPUTM.Size = new System.Drawing.Size(118, 20);
             this.txtIPUTM.TabIndex = 0;
+            this.txtIPUTM.Text = "127.0.0.1:8080";
             // 
             // label1
             // 
@@ -201,6 +204,8 @@
             // 
             // tabSender
             // 
+            this.tabSender.Controls.Add(this.txtFsrarId);
+            this.tabSender.Controls.Add(this.txtOutResendTTN);
             this.tabSender.Controls.Add(this.txtOutTTN);
             this.tabSender.Controls.Add(this.btnSendResend);
             this.tabSender.Controls.Add(this.btnGetFormBRegInfo);
@@ -213,6 +218,30 @@
             this.tabSender.Text = "Sender";
             this.tabSender.UseVisualStyleBackColor = true;
             // 
+            // txtFsrarId
+            // 
+            this.txtFsrarId.Location = new System.Drawing.Point(286, 36);
+            this.txtFsrarId.Name = "txtFsrarId";
+            this.txtFsrarId.Size = new System.Drawing.Size(188, 20);
+            this.txtFsrarId.TabIndex = 8;
+            this.txtFsrarId.Text = "1234567890";
+            // 
+            // txtOutResendTTN
+            // 
+            this.txtOutResendTTN.Location = new System.Drawing.Point(480, 36);
+            this.txtOutResendTTN.Name = "txtOutResendTTN";
+            this.txtOutResendTTN.Size = new System.Drawing.Size(188, 364);
+            this.txtOutResendTTN.TabIndex = 9;
+            this.txtOutResendTTN.Text = "";
+            // 
+            // txtOutTTN
+            // 
+            this.txtOutTTN.Location = new System.Drawing.Point(286, 62);
+            this.txtOutTTN.Name = "txtOutTTN";
+            this.txtOutTTN.Size = new System.Drawing.Size(188, 338);
+            this.txtOutTTN.TabIndex = 8;
+            this.txtOutTTN.Text = "";
+            // 
             // btnSendResend
             // 
             this.btnSendResend.Location = new System.Drawing.Point(286, 9);
@@ -221,14 +250,6 @@
             this.btnSendResend.TabIndex = 7;
             this.btnSendResend.Text = "Resend TTN";
             this.btnSendResend.UseVisualStyleBackColor = true;
-            // 
-            // txtOutTTN
-            // 
-            this.txtOutTTN.Location = new System.Drawing.Point(286, 36);
-            this.txtOutTTN.Name = "txtOutTTN";
-            this.txtOutTTN.Size = new System.Drawing.Size(188, 364);
-            this.txtOutTTN.TabIndex = 8;
-            this.txtOutTTN.Text = "";
             // 
             // MainForm
             // 
@@ -247,6 +268,7 @@
             this.tabControl1.ResumeLayout(false);
             this.tabViewer1.ResumeLayout(false);
             this.tabSender.ResumeLayout(false);
+            this.tabSender.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -273,6 +295,8 @@
         private System.Windows.Forms.TabPage tabSender;
         private System.Windows.Forms.RichTextBox txtOutTTN;
         private System.Windows.Forms.Button btnSendResend;
+        private System.Windows.Forms.RichTextBox txtOutResendTTN;
+        private System.Windows.Forms.TextBox txtFsrarId;
     }
 }
 
